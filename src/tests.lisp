@@ -1,0 +1,11 @@
+;(asdf:load-system :cl-termbox)
+(in-package :termbox-extras)
+
+(defun test ()
+  (termbox:init)
+  (termbox:clear)
+  (termbox:change-cell 0 0 (char-code #\#) termbox:+yellow+ 0)
+  (termbox:present)
+  (let* ((event (termbox:poll-event)))
+    (termbox:shutdown)
+    (print event)))
